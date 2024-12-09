@@ -7,11 +7,13 @@
 #define SIZE 8
 void readFile(FILE* fPtr, char array1[], int array1Size);
 void storeString(char stringArray[], int arraySize);
+void display(FILE* fPtr, char str[]);
+void editFile();
 int main(){
 	//creating variables
 	FILE* fp;
 	char y;//this holds the value for A, N, or V
-	char array[STRING], readArray[SIZE]; //this holds the string that the user enters
+	char array[STRING], readArray[SIZE], displayArray[STRING]; //this holds the string that the user enters
 	fp = fopen(INPUT, "r");
 	if (fp == NULL){
 		printf("no work\n");
@@ -20,6 +22,7 @@ int main(){
 	
 	readFile(fp, readArray, SIZE);
 	storeString(array, STRING);
+	display(fp, displayArray);
 	fclose(fp);
 	return 0;
 }
@@ -44,3 +47,8 @@ void storeString(char stringArray[], int arraySize){
 	fgets(stringArray, arraySize, stdin);
 }
 
+void display(FILE* fPtr, char str[]){
+while (fgets(str, STRING, fPtr) != NULL){
+	printf("%s", str);
+	}
+}
