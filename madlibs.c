@@ -14,7 +14,8 @@ int main(){
 	FILE* fp;
 	char y;//this holds the value for A, N, or V
 	char array[STRING], readArray[SIZE], displayArray[STRING]; //this holds the string that the user enters
-	fp = fopen(INPUT, "r");
+	
+	fp = fopen(INPUT, "r"); //Read
 	if (fp == NULL){
 		printf("no work\n");
 		return 0;
@@ -42,6 +43,12 @@ void readFile(FILE* fPtr, char array1[], int array1Size){
 		}
 	}
 }
+
+void editFile(){
+
+
+}
+
 /*This function just stores the input from the user into the array in the main function. There is no prompting in the function because the prompts could be different and I thought that could be handled in the specific adjective, noun, or verb functions. So the funciton will need to be called after the prompting each time. If you have any questions or need me to work on it or if it breaks just text me. */
 void storeString(char stringArray[], int arraySize){
 	fgets(stringArray, arraySize, stdin);
@@ -51,4 +58,4 @@ void display(FILE* fPtr, char str[]){
 while (fgets(str, STRING, fPtr) != NULL){
 	printf("%s", str);
 	}
-}
+} 
