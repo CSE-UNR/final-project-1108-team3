@@ -1,52 +1,43 @@
+// C Program to Read a File Using fscanf()
 #include <stdio.h>
-
-#define FILE_NAME "madlib2.txt"
-#define IMAGE_NUM_LINES 100
-#define IMAGE_LINE_LENGTH 100
-
-void displayCode(FILE* fin, int numLines, int lineLength);
-void display(FILE* file_ptr, char str[]);
-
-int main(){
-
-	FILE* code;
-	
-	code = fopen(FILE_NAME, "r");
-	
-	char string[100];
-
-	if(code == NULL){ 
-		printf("File didn't open.\n");
-		return 0;
-	}
-printf("      CODE:\n");
-	display(code, string);
-	fclose(code);
-	return 0;
-}
-
-void displayCode(FILE* fin, int numLines, int lineLength){ // The exact numbers
-	int a;
-	for(int i=0; i< numLines; i++){
-		for(int j=0; j<lineLength; j++){
-			fscanf(fin, "%c", &a);
-			printf("%c ", a);
-		}
-		printf("\n");
-	}	
-	
-}
-
-void editFile(){
-
-
-}
-
-void display(FILE* file_ptr, char str[]){
-
-  printf("Content of this file are:: \n");
-    while (fgets(str, 50, file_ptr) != '\0') {
-        printf("%s", str);
+#define SIZE 100
+void storeString(FILE* ptr, char stringArray[][SIZE], int arraySize);
+void speech(FILE* fp, char Filearray[][SIZE], int filesize);
+int main() {
+    FILE *ptr = fopen("madlib2.txt", "r");
+    if (ptr == NULL) {
+        printf("no such file.\n");
+        return 0;
     }
+char name[100][100];
+
+    storeString(ptr, name, 18);
+
+    return 0;
 }
 
+void storeString(FILE* ptr, char stringArray[][SIZE], int arraySize){
+	while (fscanf(ptr, "%s", stringArray) == 1){
+	printf("%s", stringArray);
+	}
+}
+
+void speech(FILE* fp, char Filearray[][SIZE], int filesize){
+	for(int i = 0; i < filesize; i++){
+    	if(Filearray[i][0] == 'A'){
+        	printf("Please enter an adjective: ");
+       
+        	storeString(fp, Filearray[i][SIZE], SIZE);
+    	}
+    	else if (Filearray[i][0] == 'N'){
+        	printf("Please enter a noun: ");
+      
+        	storeString(fp, Filearray[i][SIZE], SIZE);
+    	}
+    	else if (Filearray[i][0] == 'V'){
+        	printf("Please enter a verb: ");
+        	
+        	storeString(fp, Filearray[i][SIZE], SIZE);
+    	}
+	}
+}
