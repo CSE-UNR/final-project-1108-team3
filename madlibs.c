@@ -16,28 +16,16 @@ int main(){
 	char array[SIZE], arrayD[SIZE], arrayTwo[SIZE][SIZE];
 	fp = fopen(INPUT, "r");
 	if (fp == NULL){
-    	printf("no work\n");
+    	printf("File does not open\n");
     	return 0;
 	}
     
-/*display(fp, arrayD);
     
-    printf("\n");
-    fclose(fp);
-    
-    fp = fopen(INPUT, "r");*/
-    
-   y = readFile(fp, arrayTwo);
-    
-	printf("%d\n", y);
+	y = readFile(fp, arrayTwo);
 	
-	
-  speech(arrayTwo, y);
+	speech(arrayTwo, y);
+  
     
-    fclose(fp);
-   fp = fopen(INPUT, "r");
-    
-//displayTwo(fp, arrayD, arrayTwo, y);
 	fclose(fp);
 	return 0;
 }
@@ -46,13 +34,12 @@ int readFile(FILE* fPtr, char array[][SIZE]){
 int counter = 0;
 for(int i = 0; fgets(array[i], SIZE, fPtr) != NULL; i++) {
 counter ++;
-    }
+	}
 	return counter;
 }
 
 void storeString(char stringArray[], int arraySize){
-	fgets(stringArray, arraySize, stdin);
-	printf("%s", stringArray);
+	scanf("%s", stringArray);	
 }
 
 void speech(char Filearray[][SIZE], int filesize){
@@ -76,9 +63,7 @@ void speech(char Filearray[][SIZE], int filesize){
 }
 
 void display(FILE* fPtr, char str[]){
-    while (fgets(str, SIZE, fPtr) != NULL) {
-        printf("%s", str);
-    }
+while (fgets(str, SIZE, fPtr) != NULL) {
+	printf("%s", str);
+	}
 }
-
-
